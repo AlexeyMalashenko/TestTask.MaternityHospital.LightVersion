@@ -12,6 +12,7 @@ using TestTask.MaternityHospital.Domain.Interfaces.Patients.Models;
 using TestTask.MaternityHospital.FHIR.Models.Implementations;
 using TestTask.MaternityHospital.WebApi.Contracts.Patients.Incoming;
 using TestTask.MaternityHospital.WebApi.Contracts.Patients.Outgoing;
+using TestTask.MaternityHospital.WebApi.Extensions;
 using TestTask.MaternityHospital.WebApi.Helpers;
 
 namespace TestTask.MaternityHospital.WebApi.Controllers;
@@ -37,97 +38,15 @@ public sealed class PatientController : BaseController
     [Route("api/patient")]
     public async Task<ActionResult> CreatePatient([FromBody] PatientIncContract incContract)
     {
-        if (string.IsNullOrWhiteSpace(incContract.Name?.Family))
-        {
-            return UnprocessableEntity("Family can't be null or white space");
-        }
+        var patient = _patientManager.CreatePatient(incContract.Name.Family, incContract.BirthDate);
 
-        if (incContract.BirthDate == DateTime.MinValue)
-        {
-            return UnprocessableEntity("BirthDate cant be null or white space ");
-        }
-
-        var patient = _patientManager.CreatePatient(incContract.Name?.Family, incContract.BirthDate);
-
-        string? givenFirst = null;
-        string? givenSecond = null;
-        var inputList = incContract.Name?.Given;
-
-        if (inputList != null && inputList.Count > 0)
-        {
-            if (inputList.Count >= 1)
-            {
-                givenFirst = inputList[0];
-            }
-            if (inputList.Count >= 2)
-            {
-                givenSecond = inputList[1];
-            }
-        }
+        var (givenFirst, givenSecond) = incContract.Name!.Given.ExtractTwoGivenNames();
 
         var genderType = GenderTypeConverter.Convert(incContract.Gender);
         patient.Configure(incContract.Name?.Use, givenFirst, givenSecond, genderType, incContract.Active);
         await patient.Save();
 
         var result = new PatientOutContract(patient);
-        return Ok(result);
-    }
-
-    /// <summary>
-    /// Создание коллекции пациентов (эндпоинт для консольного приложения "TestTask.MaternityHospital.PatientUploaderConsoleApp"
-    /// </summary>
-    /// <param name="incContract"></param>
-    /// <returns></returns>
-    [HttpPost]
-    [Route("api/patients")]
-    public async Task<ActionResult> CreatePatientCollection([FromBody] List<PatientIncContract> incContract)
-    {
-        var result = new List<PatientOutContract>();
-
-        foreach (var item in incContract)
-        {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(item.Name?.Family))
-                {
-                    break;
-                }
-
-                if (item.BirthDate == DateTime.MinValue)
-                {
-                    break;
-                }
-
-                var patient = _patientManager.CreatePatient(item.Name?.Family, item.BirthDate);
-
-                string? givenFirst = null;
-                string? givenSecond = null;
-                var inputList = item.Name?.Given;
-
-                if (inputList != null && inputList.Count > 0)
-                {
-                    if (inputList.Count >= 1)
-                    {
-                        givenFirst = inputList[0];
-                    }
-                    if (inputList.Count >= 2)
-                    {
-                        givenSecond = inputList[1];
-                    }
-                }
-
-                var genderType = GenderTypeConverter.Convert(item.Gender);
-                patient.Configure(item.Name?.Use, givenFirst, givenSecond, genderType, item.Active);
-                await patient.Save();
-
-                result.Add(new PatientOutContract(patient));
-            }
-            catch (Exception)
-            {
-                //ignored
-            }
-        }
-
         return Ok(result);
     }
 
@@ -186,37 +105,13 @@ public sealed class PatientController : BaseController
         {
             var patient = await _patientManager.GetPatient(id);
 
-            if (string.IsNullOrWhiteSpace(incContract.Name?.Family))
-            {
-                return UnprocessableEntity("Family can't be null or white space");
-            }
-
-            if (incContract.BirthDate == DateTime.MinValue)
-            {
-                return UnprocessableEntity("BirthDate cant be null or white space ");
-            }
-
             patient.Family = incContract.Name.Family;
             patient.BirthDateTimeUtc = incContract.BirthDate;
 
-            string? givenFirst = null;
-            string? givenSecond = null;
-            var inputList = incContract.Name?.Given;
-
-            if (inputList != null && inputList.Count > 0)
-            {
-                if (inputList.Count >= 1)
-                {
-                    givenFirst = inputList[0];
-                }
-                if (inputList.Count >= 2)
-                {
-                    givenSecond = inputList[1];
-                }
-            }
+            var (givenFirst, givenSecond) = incContract.Name!.Given.ExtractTwoGivenNames();
 
             var genderType = GenderTypeConverter.Convert(incContract.Gender);
-            patient.Configure(incContract.Name?.Use, givenFirst, givenSecond, genderType, incContract.Active);
+            patient.Configure(incContract.Name.Use, givenFirst, givenSecond, genderType, incContract.Active);
             await patient.Save();
 
             var result = new PatientOutContract(patient);

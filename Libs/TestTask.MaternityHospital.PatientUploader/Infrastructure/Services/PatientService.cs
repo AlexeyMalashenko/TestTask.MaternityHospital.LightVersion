@@ -19,8 +19,10 @@ public class PatientService : IPatientService
 
     public async Task UploadPatientsAsync(IEnumerable<Patient> patients)
     {
-        var response = await _httpClient.PostAsJsonAsync(_settings.PostPatientEndpoint, patients);
-        response.EnsureSuccessStatusCode();
-
+        foreach (var patient in patients)
+        {
+            var response = await _httpClient.PostAsJsonAsync(_settings.PostPatientEndpoint, patient);
+            response.EnsureSuccessStatusCode();
+        }
     }
 }
