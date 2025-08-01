@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "PatientUploaderConsoleApp": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

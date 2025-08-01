@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "48fbb0e1-558b-4876-8adf-e3d72e72aa2c",
+		"name": "PatientAPI Copy",
+		"description": "Postman коллекция для PatientController",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "17081355"
+	},
+	"item": [
+		{
+			"name": "Create Patient",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": {\n    \"use\": \"official\",\n    \"family\": \"Иванов\",\n    \"given\": [\"Иван\", \"Иванович\"]\n  },\n  \"gender\": \"male\",\n  \"birthDate\": \"2024-01-13T18:25:43\",\n  \"active\": true\n}"
+				},
+				"url": "http://localhost:5000/api/patient"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Patient Collection",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  {\n    \"name\": {\n      \"use\": \"official\",\n      \"family\": \"Иванов\",\n      \"given\": [\"Иван\", \"Иванович\"]\n    },\n    \"gender\": \"male\",\n    \"birthDate\": \"2024-01-13T18:25:43\",\n    \"active\": true\n  },\n  {\n    \"name\": {\n      \"use\": \"official\",\n      \"family\": \"Петров\",\n      \"given\": [\"Пётр\"]\n    },\n    \"gender\": \"male\",\n    \"birthDate\": \"1985-10-11T00:00:00\",\n    \"active\": true\n  }\n]"
+				},
+				"url": "http://localhost:5000/api/patients"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Patient by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5000/api/patient/ffaa495d-da81-47a1-a757-4169c873e230"
+			},
+			"response": []
+		},
+		{
+			"name": "Search Patients By BirthDate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:20811/api/patients/searchByBirthDate?birthdate=eq2024-01-13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "20811",
+					"path": [
+						"api",
+						"patients",
+						"searchByBirthDate"
+					],
+					"query": [
+						{
+							"key": "birthdate",
+							"value": "eq2024-01-13"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Patient",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": {\n    \"use\": \"official\",\n    \"family\": \"Иванов\",\n    \"given\": [\"Иван\", \"Иванович\"]\n  },\n  \"gender\": \"male\",\n  \"birthDate\": \"2024-02-01T18:25:43\",\n  \"active\": false\n}"
+				},
+				"url": "http://localhost:5000/api/patient/ffaa495d-da81-47a1-a757-4169c873e230"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Patient",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:5000/api/patient/ffaa495d-da81-47a1-a757-4169c873e230"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000"
+		},
+		{
+			"key": "patientId",
+			"value": "replace-with-id"
+		}
+	]
+}

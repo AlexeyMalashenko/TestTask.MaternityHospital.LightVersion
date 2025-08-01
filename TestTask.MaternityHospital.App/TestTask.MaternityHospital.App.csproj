@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <UserSecretsId>4459347c-6b2c-41e0-afe1-85628eb5f9aa</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove=".docker\**" />
+    <Content Remove=".docker\**" />
+    <EmbeddedResource Remove=".docker\**" />
+    <None Remove=".docker\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json.user" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.20">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Libs\TestTask.MaternityHospital.Domain\TestTask.MaternityHospital.Domain.csproj" />
+    <ProjectReference Include="..\Libs\TestTask.MaternityHospital.StorageService\TestTask.MaternityHospital.StorageService.csproj" />
+    <ProjectReference Include="..\Libs\TestTask.MaternityHospital.WebApi\TestTask.MaternityHospital.WebApi.csproj" />
+  </ItemGroup>
+
+</Project>

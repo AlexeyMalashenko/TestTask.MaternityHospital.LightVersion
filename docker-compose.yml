@@ -1,0 +1,35 @@
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: db_maternity_hospital
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=db;Port=3306;Database=db_maternity_hospital;Uid=admin;Pwd=admin;"
+    ports:
+      - "5000:80"
+    command: ["./wait-for-mysql.sh", "db", "3306", "dotnet", "TestTask.MaternityHospital.App.dll"]
+
+  uploader:
+    build:
+      context: ./Libs/TestTask.MaternityHospital.PatientUploader
+      dockerfile: Dockerfile
+    environment:
+      API__BASE_URL: http://app:80
+    
+volumes:
+  db_data:
