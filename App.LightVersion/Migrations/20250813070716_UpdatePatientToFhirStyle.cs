@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace TestTask.MaternityHospital.StorageService.Persistence.Migrations
+namespace App.LightVersion.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class UpdatePatientToFhirStyle : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,24 +18,23 @@ namespace TestTask.MaternityHospital.StorageService.Persistence.Migrations
                 name: "Patients",
                 columns: table => new
                 {
-                    PatientGlobalKey = table.Column<string>(type: "varchar(255)", nullable: false)
+                    Id = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Use = table.Column<string>(type: "longtext", nullable: true)
+                    Name_Id = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Family = table.Column<string>(type: "longtext", nullable: true)
+                    Name_Use = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    GivenFirst = table.Column<string>(type: "longtext", nullable: true)
+                    Name_Family = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    GivenSecond = table.Column<string>(type: "longtext", nullable: true)
+                    Name_Given = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Gender = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    BirthDateTimeUtc = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    BirthDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    Gender = table.Column<int>(type: "int", nullable: false),
                     IsActive = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Patients", x => x.PatientGlobalKey);
+                    table.PrimaryKey("PK_Patients", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
         }

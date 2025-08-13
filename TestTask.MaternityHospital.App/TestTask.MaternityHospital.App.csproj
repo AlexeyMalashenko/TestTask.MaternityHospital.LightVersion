@@ -31,7 +31,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Libs\TestTask.MaternityHospital.Domain\TestTask.MaternityHospital.Domain.csproj" />
     <ProjectReference Include="..\Libs\TestTask.MaternityHospital.StorageService\TestTask.MaternityHospital.StorageService.csproj" />
-    <ProjectReference Include="..\Libs\TestTask.MaternityHospital.WebApi\TestTask.MaternityHospital.WebApi.csproj" />
   </ItemGroup>
 
 </Project>

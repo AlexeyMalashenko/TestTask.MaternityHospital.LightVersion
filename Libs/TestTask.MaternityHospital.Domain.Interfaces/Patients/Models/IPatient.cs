@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using TestTask.MaternityHospital.StorageService.Interfaces.Patients.Enums;
 
-namespace TestTask.MaternityHospital.Domain.Interfaces.Patients.Models;
+namespace App.LightVersion.Models.Entites;
 public interface IPatient
 {
     string PatientGlobalKey { get; }

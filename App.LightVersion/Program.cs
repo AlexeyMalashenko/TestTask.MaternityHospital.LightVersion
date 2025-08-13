@@ -1,25 +1,21 @@
-﻿using Microsoft.AspNetCore.Builder;
+using App.LightVersion.Data;
+using App.LightVersion.Repositories;
+using App.LightVersion.Repositories.Interfaces;
+using App.LightVersion.Services;
+using App.LightVersion.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using System;
-using System.IO;
-using TestTask.MaternityHospital.App;
-using TestTask.MaternityHospital.StorageService.Interfaces.Patients.Providers;
-using TestTask.MaternityHospital.StorageService.Patients.Providers;
-using TestTask.MaternityHospital.StorageService.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddJsonFile("appsettings.json.user", optional: true);
 
-DependencyConfig.ConfigureServices(builder.Services);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddScoped<IPatientDataProvider, PatientDataProvider>();
+builder.Services.AddTransient<IPatientRepository, PatientRepository>();
+builder.Services.AddScoped<IPatientService, PatientService>();
+
 
 builder.Services.AddDbContext<PatientsDbContext>(options =>
 {
@@ -51,11 +47,11 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var dbContext = scope.ServiceProvider.GetRequiredService<PatientsDbContext>();
-    dbContext.Database.Migrate();
-}
+//using (var scope = app.Services.CreateScope())
+//{
+//    var dbContext = scope.ServiceProvider.GetRequiredService<PatientsDbContext>();
+//    dbContext.Database.Migrate();
+//}
 
 if (app.Environment.IsDevelopment())
 {

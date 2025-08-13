@@ -2,23 +2,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36203.30
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTask.MaternityHospital.App", "TestTask.MaternityHospital.App\TestTask.MaternityHospital.App.csproj", "{C7F8B1F1-615B-4163-94FD-C0D65E6FAC0B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTask.MaternityHospital.WebApi", "Libs\TestTask.MaternityHospital.WebApi\TestTask.MaternityHospital.WebApi.csproj", "{C92DAE69-DAF4-4FBB-BD9C-9B4DF66860F2}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{CF903953-CAA4-4A4B-A6C7-94560DE4887C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{7C5E260A-55A7-46FE-9B24-5C942C541B2E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTask.MaternityHospital.Domain", "Libs\TestTask.MaternityHospital.Domain\TestTask.MaternityHospital.Domain.csproj", "{18FA7D46-B743-40A3-AFEB-B05F28BF10DE}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTask.MaternityHospital.Domain.Interfaces", "Libs\TestTask.MaternityHospital.Domain.Interfaces\TestTask.MaternityHospital.Domain.Interfaces.csproj", "{515EDA49-6795-4D83-A611-38CF8555C6CF}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTask.MaternityHospital.StorageService", "Libs\TestTask.MaternityHospital.StorageService\TestTask.MaternityHospital.StorageService.csproj", "{B1E00284-11E8-4D50-B0FC-4AC2E5BC4D6B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTask.MaternityHospital.StorageService.Interfaces", "Libs\TestTask.MaternityHospital.StorageService.Interfaces\TestTask.MaternityHospital.StorageService.Interfaces.csproj", "{EA708175-97FE-4737-B39F-8D8AAE46C3F9}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceInterfaces", "ServiceInterfaces", "{A85EC991-0E6B-4135-903E-DF15CE8EDF41}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Queries", "Queries", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
@@ -26,36 +12,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTask.MaternityHospital.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTask.MaternityHospital.PatientUploader", "Libs\TestTask.MaternityHospital.PatientUploader\TestTask.MaternityHospital.PatientUploader.csproj", "{8970F67B-253A-3FD9-6F31-544E41906A26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.LightVersion", "App.LightVersion\App.LightVersion.csproj", "{011ACE95-226F-4489-976C-595398040C62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C7F8B1F1-615B-4163-94FD-C0D65E6FAC0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C7F8B1F1-615B-4163-94FD-C0D65E6FAC0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C7F8B1F1-615B-4163-94FD-C0D65E6FAC0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C7F8B1F1-615B-4163-94FD-C0D65E6FAC0B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C92DAE69-DAF4-4FBB-BD9C-9B4DF66860F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C92DAE69-DAF4-4FBB-BD9C-9B4DF66860F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C92DAE69-DAF4-4FBB-BD9C-9B4DF66860F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C92DAE69-DAF4-4FBB-BD9C-9B4DF66860F2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{18FA7D46-B743-40A3-AFEB-B05F28BF10DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{18FA7D46-B743-40A3-AFEB-B05F28BF10DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{18FA7D46-B743-40A3-AFEB-B05F28BF10DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{18FA7D46-B743-40A3-AFEB-B05F28BF10DE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{515EDA49-6795-4D83-A611-38CF8555C6CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{515EDA49-6795-4D83-A611-38CF8555C6CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{515EDA49-6795-4D83-A611-38CF8555C6CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{515EDA49-6795-4D83-A611-38CF8555C6CF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B1E00284-11E8-4D50-B0FC-4AC2E5BC4D6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B1E00284-11E8-4D50-B0FC-4AC2E5BC4D6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1E00284-11E8-4D50-B0FC-4AC2E5BC4D6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1E00284-11E8-4D50-B0FC-4AC2E5BC4D6B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EA708175-97FE-4737-B39F-8D8AAE46C3F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EA708175-97FE-4737-B39F-8D8AAE46C3F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EA708175-97FE-4737-B39F-8D8AAE46C3F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EA708175-97FE-4737-B39F-8D8AAE46C3F9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6F975779-EE04-FA0E-62B8-7E8A4B7CC792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6F975779-EE04-FA0E-62B8-7E8A4B7CC792}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F975779-EE04-FA0E-62B8-7E8A4B7CC792}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -64,16 +32,16 @@ Global
 		{8970F67B-253A-3FD9-6F31-544E41906A26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8970F67B-253A-3FD9-6F31-544E41906A26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8970F67B-253A-3FD9-6F31-544E41906A26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{011ACE95-226F-4489-976C-595398040C62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{011ACE95-226F-4489-976C-595398040C62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{011ACE95-226F-4489-976C-595398040C62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{011ACE95-226F-4489-976C-595398040C62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{18FA7D46-B743-40A3-AFEB-B05F28BF10DE} = {CF903953-CAA4-4A4B-A6C7-94560DE4887C}
-		{515EDA49-6795-4D83-A611-38CF8555C6CF} = {CF903953-CAA4-4A4B-A6C7-94560DE4887C}
 		{B1E00284-11E8-4D50-B0FC-4AC2E5BC4D6B} = {7C5E260A-55A7-46FE-9B24-5C942C541B2E}
-		{EA708175-97FE-4737-B39F-8D8AAE46C3F9} = {A85EC991-0E6B-4135-903E-DF15CE8EDF41}
-		{A85EC991-0E6B-4135-903E-DF15CE8EDF41} = {CF903953-CAA4-4A4B-A6C7-94560DE4887C}
 		{6F975779-EE04-FA0E-62B8-7E8A4B7CC792} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{8970F67B-253A-3FD9-6F31-544E41906A26} = {7C5E260A-55A7-46FE-9B24-5C942C541B2E}
 	EndGlobalSection

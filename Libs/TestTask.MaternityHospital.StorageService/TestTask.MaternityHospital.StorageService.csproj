@@ -13,9 +13,4 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\TestTask.MaternityHospital.Domain.Interfaces\TestTask.MaternityHospital.Domain.Interfaces.csproj" />
-    <ProjectReference Include="..\TestTask.MaternityHospital.StorageService.Interfaces\TestTask.MaternityHospital.StorageService.Interfaces.csproj" />
-  </ItemGroup>
-
 </Project>
